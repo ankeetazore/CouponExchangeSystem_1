@@ -27,13 +27,16 @@ namespace CouponExchangeSystemApi_1.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CategoryImagePath")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<string>("CategoryName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("DATE");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -56,16 +59,20 @@ namespace CouponExchangeSystemApi_1.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("BrandName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<int>("CouponCategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("CouponCode")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<DateTime>("ExpiryDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("DATE");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -77,10 +84,11 @@ namespace CouponExchangeSystemApi_1.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ProductList")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<DateTime>("UploadDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("DATE");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -108,16 +116,21 @@ namespace CouponExchangeSystemApi_1.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("EmailId")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<long?>("MobileNumber")
-                        .HasColumnType("bigint");
+                        .HasColumnType("BIGINT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<string>("ProfilePath")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("VARCHAR(100)");
 
                     b.HasKey("UserId");
 
@@ -132,16 +145,22 @@ namespace CouponExchangeSystemApi_1.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("VARCHAR(50)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("VARCHAR(100)");
 
                     b.Property<string>("UserRole")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("VARCHAR(20)");
 
                     b.HasKey("Id");
 

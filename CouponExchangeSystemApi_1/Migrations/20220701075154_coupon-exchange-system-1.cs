@@ -13,12 +13,12 @@ namespace CouponExchangeSystemApi_1.Migrations
                 {
                     UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EmailId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MobileNumber = table.Column<long>(type: "bigint", nullable: true),
+                    Name = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: false),
+                    EmailId = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: false),
+                    MobileNumber = table.Column<long>(type: "BIGINT", nullable: true),
                     CouponUploadCount = table.Column<int>(type: "int", nullable: true),
                     CouponExchangeCount = table.Column<int>(type: "int", nullable: true),
-                    ProfilePath = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ProfilePath = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -31,9 +31,9 @@ namespace CouponExchangeSystemApi_1.Migrations
                 {
                     CouponCategoryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CategoryImagePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CategoryName = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: false),
+                    CategoryImagePath = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "DATE", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -55,9 +55,9 @@ namespace CouponExchangeSystemApi_1.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserRole = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Password = table.Column<string>(type: "VARCHAR(50)", maxLength: 50, nullable: false),
+                    UserName = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: false),
+                    UserRole = table.Column<string>(type: "VARCHAR(20)", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -76,15 +76,15 @@ namespace CouponExchangeSystemApi_1.Migrations
                 {
                     CouponId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ExpiryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ExpiryDate = table.Column<DateTime>(type: "DATE", nullable: false),
                     MinSpend = table.Column<int>(type: "int", nullable: true),
                     MaxOff = table.Column<int>(type: "int", nullable: true),
-                    BrandName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CouponCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProductList = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BrandName = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: false),
+                    CouponCode = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: false),
+                    ProductList = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     CouponCategoryId = table.Column<int>(type: "int", nullable: false),
-                    UploadDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UploadDate = table.Column<DateTime>(type: "DATE", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
