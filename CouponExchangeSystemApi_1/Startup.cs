@@ -1,4 +1,6 @@
 using CouponExchangeSystemApi_1.Data;
+using CouponExchangeSystemApi_1.Interface;
+using CouponExchangeSystemApi_1.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,13 +30,20 @@ namespace CouponExchangeSystemApi_1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Services
+            services.AddTransient<IUserRegistrationService, UserRegistrationService>();
+            services.AddTransient<ILoginService, LoginService>();
+
             services.AddDbContext<AppDbContext>(options =>
-        options.UseSqlServer(Configuration.GetConnectionString("myconn")));
+        options.UseSqlServer(Configuration.GetConnectionString("myconn"), b => b.MigrationsAssembly("CouponExchangeSystemApi_1.Data")));
+
             services.AddControllers();
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CouponExchangeSystemApi_1", Version = "v1" });
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
