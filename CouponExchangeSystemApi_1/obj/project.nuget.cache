@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fW4pHb4pbjUGCbzwCftiAohLYpfSP1GDuIvT8yQU8Ecfju+wosJpcrRnGCAKQJ94BOF5k1oo9/YGQumkLv6Okg==",
+  "dgSpecHash": "pHhwi1/MNKFyCjlhrx8UFuokp6z6omfOG9/dvJThwGU0hhVct5CnxOJ7aELTnD6YNWiOwJEvJqvJQ1dbDbwCQQ==",
   "success": true,
   "projectFilePath": "D:\\Cognizant_Training\\Project\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1.csproj",
   "expectedPackageFiles": [
@@ -106,8 +106,7 @@
     "C:\\Users\\abc\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\abc\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\abc\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\abc\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\abc\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+    "C:\\Users\\abc\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -38,7 +38,9 @@ namespace CouponExchangeSystemApi_1
         options.UseSqlServer(Configuration.GetConnectionString("myconn"), b => b.MigrationsAssembly("CouponExchangeSystemApi_1.Data")));
 
             services.AddControllers();
-            
+
+            services.AddCors(options => { options.AddPolicy(name: "AllowOrigin", builder => { builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod(); }); });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CouponExchangeSystemApi_1", Version = "v1" });
