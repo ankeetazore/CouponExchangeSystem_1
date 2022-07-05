@@ -35,7 +35,7 @@ namespace CouponExchangeSystemApi_1
             services.AddTransient<ILoginService, LoginService>();
 
             services.AddDbContext<AppDbContext>(options =>
-        options.UseSqlServer(Configuration.GetConnectionString("myconn"), b => b.MigrationsAssembly("CouponExchangeSystemApi_1.Data")));
+        options.UseSqlServer(Configuration.GetConnectionString("myconn")));
 
             services.AddControllers();
 
