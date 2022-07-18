@@ -30,17 +30,20 @@ namespace CouponExchangeSystemApi_1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => { options.AddPolicy(name: "AllowOrigin", builder => { builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod(); }); });
+
             //Services
             services.AddTransient<IUserRegistrationService, UserRegistrationService>();
             services.AddTransient<ILoginService, LoginService>();
+            services.AddTransient<ICouponCategoryService, CouponCategoryService>();
+            services.AddTransient<ICouponService, CouponService>();
 
             services.AddDbContext<AppDbContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("myconn")));
 
+            
             services.AddControllers();
-
-            services.AddCors(options => { options.AddPolicy(name: "AllowOrigin", builder => { builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod(); }); });
-
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CouponExchangeSystemApi_1", Version = "v1" });
@@ -61,7 +64,7 @@ namespace CouponExchangeSystemApi_1
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors("AllowOrigin");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

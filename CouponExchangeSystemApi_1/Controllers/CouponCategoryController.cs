@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CouponExchangeSystemApi_1.Interface;
+using CouponExchangeSystemApi_1.Models;
+using CouponExchangeSystemApi_1.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,23 +12,38 @@ namespace CouponExchangeSystemApi_1.Controllers
     [ApiController]
     public class CouponCategoryController : ControllerBase
     {
-        // GET api/<CouponCategoryController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        private ICouponCategoryService couponCategoryService;
+        public CouponCategoryController(ICouponCategoryService _couponCategoryService)
         {
-            return "value";
+            couponCategoryService = _couponCategoryService;
         }
 
-        // POST api/<CouponCategoryController>
+        [HttpGet()]
+        public List<CouponCategoryData> GetAll()
+        {
+            return couponCategoryService.GeAllCouponCategory();
+        }
+
+        [HttpGet("{couponCategoryId}")]
+        public CouponCategoryData Get(int couponCategoryId)
+        {
+            return couponCategoryService.GetCouponCategoryById(couponCategoryId);
+        }
+
         [HttpPost]
-        public void Post([FromBody] string value)
+        public CouponCategoryData Post([FromBody] CouponCategoryData couponCategory)
         {
+            //If CouponCategoryId is 0 then perform Add else Update
+            if (couponCategory.CouponCategoryId == 0)
+                return couponCategoryService.AddCouponCategory(couponCategory);
+            else
+                return couponCategoryService.UpdateCouponCategory(couponCategory);
         }
 
-        // DELETE api/<CouponCategoryController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{couponCategoryId}")]
+        public string Delete(int couponCategoryId)
         {
+            return couponCategoryService.DeleteCouponCategoryById(couponCategoryId);
         }
     }
 }

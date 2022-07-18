@@ -1,5 +1,6 @@
 ﻿using CouponExchangeSystemApi_1.Interface;
 using CouponExchangeSystemApi_1.ViewModels;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

@@ -21,7 +21,7 @@ namespace CouponExchangeSystemApi_1.Service
                 //Check if EmailId is already present or not
                 if (appDbContext.UserDetails.Any(x => x.EmailId.ToLower() == user.EmailId.ToLower()))
                 {
-                    //return null if "User already exists"
+                    //return "User already exists";
                     return null;
                 }
                 else
@@ -49,12 +49,13 @@ namespace CouponExchangeSystemApi_1.Service
                     appDbContext.UserLoginDetails.Add(uld);
                     appDbContext.SaveChanges();
 
+                    //return "Success";
                     return user;
                 }
             }
             catch (System.Exception ex)
             {
-                //return ex.Message;
+                //return "Error";
                 return null;
             }
         }
@@ -77,8 +78,8 @@ namespace CouponExchangeSystemApi_1.Service
                     appDbContext.UserDetails.Update(ud);
 
                     //Update password in UserLoginDetails
-                    uld.Password = user.Password;
-                    appDbContext.UserLoginDetails.Update(uld);
+                    //uld.Password = user.Password;
+                    //appDbContext.UserLoginDetails.Update(uld);
                     appDbContext.SaveChanges();
                     
                     user.EmailId = ud.EmailId;
@@ -86,15 +87,17 @@ namespace CouponExchangeSystemApi_1.Service
                     user.CouponExchangeCount = ud.CouponExchangeCount;
                     user.ProfilePath = ud.ProfilePath;
                     user.UserRole = uld.UserRole;
+                    //return "Success";
                     return user;
                 }
                 else
+                    //return "User details not found";
                     return null;
                 
             }
             catch (System.Exception ex)
             {
-                //return ex.Message;
+                //return "Error";
                 return null;
             }
         }
@@ -110,6 +113,7 @@ namespace CouponExchangeSystemApi_1.Service
 
                 if (ud != null && uld != null)
                 {
+                    udd.UserId = ud.UserId;
                     udd.Name = ud.Name;
                     udd.EmailId = ud.EmailId;
                     udd.MobileNumber = ud.MobileNumber;

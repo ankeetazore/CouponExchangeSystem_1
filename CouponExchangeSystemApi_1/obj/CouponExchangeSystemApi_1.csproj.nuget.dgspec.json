@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bhavesh\\Downloads\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1.csproj": {}
+    "D:\\Cognizant_Training\\Project\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bhavesh\\Downloads\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1.csproj": {
+    "D:\\Cognizant_Training\\Project\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bhavesh\\Downloads\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1.csproj",
+        "projectUniqueName": "D:\\Cognizant_Training\\Project\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1.csproj",
         "projectName": "CouponExchangeSystemApi_1",
-        "projectPath": "C:\\Users\\Bhavesh\\Downloads\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1.csproj",
-        "packagesPath": "C:\\Users\\Bhavesh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bhavesh\\Downloads\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1\\obj\\",
+        "projectPath": "D:\\Cognizant_Training\\Project\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1.csproj",
+        "packagesPath": "C:\\Users\\abc\\.nuget\\packages\\",
+        "outputPath": "D:\\Cognizant_Training\\Project\\CouponExchangeSystemApi_1\\CouponExchangeSystemApi_1\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Bhavesh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -77,6 +81,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.17, 5.0.17]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -85,11 +95,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
->>>>>>> 62bbaa7e49c51505d742fb92311c1d1e7f0fd41f
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

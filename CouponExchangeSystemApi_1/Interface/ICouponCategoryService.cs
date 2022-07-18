@@ -1,4 +1,5 @@
 ﻿using CouponExchangeSystemApi_1.ViewModels;
+using System.Collections.Generic;
 
 namespace CouponExchangeSystemApi_1.Interface
 {
@@ -7,6 +8,7 @@ namespace CouponExchangeSystemApi_1.Interface
         CouponCategoryData AddCouponCategory(CouponCategoryData ccd);
         CouponCategoryData UpdateCouponCategory(CouponCategoryData ccd);
         CouponCategoryData GetCouponCategoryById(int couponCategoryId);
-        CouponCategoryData GeAllCouponCategory();
+        List<CouponCategoryData> GeAllCouponCategory();
+        string DeleteCouponCategoryById(int couponCategoryId);
     }
 }
