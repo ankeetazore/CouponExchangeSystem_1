@@ -42,5 +42,12 @@ namespace CouponExchangeSystemApi_1.Controllers
             else
                 return null;
         }
+
+        [Route("ExchangeCoupon")]
+        [HttpPost]
+        public CouponData ExchangeCoupon([FromBody] CouponData uploadedCoupon, int selectedCouponId)
+        {
+            return couponService.ExchangeCoupon(uploadedCoupon, selectedCouponId);
+        }
     }
 }

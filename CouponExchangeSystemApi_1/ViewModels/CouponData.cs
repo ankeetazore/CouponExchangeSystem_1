@@ -5,7 +5,7 @@ namespace CouponExchangeSystemApi_1.ViewModels
     public class CouponData
     {
         public int CouponId { get; set; }
-        public DateTime ExpiryDate { get; set; }
+        public string ExpiryDate { get; set; }
         public int? MinSpend { get; set; }
         public int? MaxOff { get; set; }
         public string BrandName { get; set; }

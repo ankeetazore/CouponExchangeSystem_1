@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("b90070dd-1e0c-4f59-bf4d-d1a46326d297")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("CouponExchangeSystemApi_1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

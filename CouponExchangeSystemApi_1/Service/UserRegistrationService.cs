@@ -131,5 +131,28 @@ namespace CouponExchangeSystemApi_1.Service
                 return null;
             }
         }
+
+        public string UpdatePassword(string username, string oldPassword, string newPassword)
+        {
+            try
+            {
+                UserLoginDetails uld = appDbContext.UserLoginDetails
+                    .Where(x => x.UserName == username && x.Password == oldPassword).FirstOrDefault();
+                if (uld != null)
+                {
+                    uld.Password = newPassword;
+                    appDbContext.UserLoginDetails.Update(uld);
+                    appDbContext.SaveChanges();
+                    return "Success";
+                }
+                else
+                    return "Wrong password entered";
+            }
+            catch (System.Exception ex)
+            {
+                return ex.Message;
+                throw;
+            }
+        }
     }
 }

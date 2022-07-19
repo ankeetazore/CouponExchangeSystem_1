@@ -60,10 +60,10 @@ namespace CouponExchangeSystemApi_1.Service
                 if (ccd != null)
                 {
                     //Check whether same CategoryName is already present in CouponCategoryDetails
-                    if (!appDbContext.CouponCategoryDetails.Where(x => x.CategoryName == data.CategoryName && x.CouponCategoryId != data.CouponCategoryId).Any())
+                    if (!appDbContext.CouponCategoryDetails.Where(x => x.CategoryName == data.CategoryName.ToUpper() && x.CouponCategoryId != data.CouponCategoryId).Any())
                     {
                         //Update is same name is not present
-                        ccd.CategoryName = data.CategoryName;
+                        ccd.CategoryName = data.CategoryName.ToUpper();
                         ccd.CategoryImagePath = data.CategoryImagePath;
                         appDbContext.CouponCategoryDetails.Update(ccd);
                         appDbContext.SaveChanges();

@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2022-07-19T13:17:05.1588147Z"
+    },
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2022-07-19T13:16:48.7271164Z"
+    }
+  },
+  "parameters": {
+    "mssql1.subscriptionId": {
+      "Name": "mssql1.subscriptionId",
+      "Type": "subscription",
+      "Value": "daae0522-80a3-46e9-9f72-63952fcea949"
+    },
+    "mssql1.resourceGroupName": {
+      "Name": "mssql1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "CouponExchangeSystem-ResGrp"
+    }
+  }
+}

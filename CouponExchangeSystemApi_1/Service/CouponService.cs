@@ -4,6 +4,8 @@ using CouponExchangeSystemApi_1.Models;
 using CouponExchangeSystemApi_1.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using System.Globalization;
 
 namespace CouponExchangeSystemApi_1.Service
 {
@@ -18,8 +20,9 @@ namespace CouponExchangeSystemApi_1.Service
         {
             try
             {
+                DateTime ExpiryDate = DateTime.Parse(data.ExpiryDate);
                 //Check if Coupon is already present or not
-                if (appDbContext.CouponDetails.Any(x => x.CouponCode == data.CouponCode && x.ExpiryDate == data.ExpiryDate))
+                if (appDbContext.CouponDetails.Any(x => x.CouponCode == data.CouponCode && x.ExpiryDate == ExpiryDate))
                 {
                     //return null if "Coupon already exists"
                     return null;
@@ -28,7 +31,7 @@ namespace CouponExchangeSystemApi_1.Service
                 {
                     //Add new entry in CouponDetails
                     CouponDetails cd = new CouponDetails();
-                    cd.ExpiryDate = data.ExpiryDate;
+                    cd.ExpiryDate = ExpiryDate;
                     cd.MinSpend = data.MinSpend;
                     cd.MaxOff = data.MaxOff;
                     cd.BrandName = data.BrandName;
@@ -42,14 +45,14 @@ namespace CouponExchangeSystemApi_1.Service
                     appDbContext.SaveChanges();
 
                     //Fetch CouponId of recently added CouponDetails
-                    data.CouponId = appDbContext.CouponDetails.Where(x => x.CouponCode == data.CouponCode && x.ExpiryDate == data.ExpiryDate)
+                    data.CouponId = appDbContext.CouponDetails.Where(x => x.CouponCode == data.CouponCode && x.ExpiryDate == ExpiryDate)
                             .Select(x => x.CouponId).FirstOrDefault();
 
                     //Fetch record from UserDetails and update CouponUploadCount
                     UserDetails ud = appDbContext.UserDetails.Where(x => x.UserId == data.UserId).FirstOrDefault();
                     if (ud != null)
                     {
-                        ud.CouponUploadCount = ud.CouponUploadCount++;
+                        ud.CouponUploadCount = ud.CouponUploadCount + 1;
                         appDbContext.UserDetails.Update(ud);
                         appDbContext.SaveChanges();
                     }
@@ -69,7 +72,7 @@ namespace CouponExchangeSystemApi_1.Service
                 CouponData cd = new CouponData();
                 var data = appDbContext.CouponDetails
                     .Where(x => x.CouponId == couponId && x.IsActive == true).FirstOrDefault();
-                cd.ExpiryDate = data.ExpiryDate;
+                cd.ExpiryDate = data.ExpiryDate.ToString("dd-MM-yyyy");
                 cd.MinSpend = data.MinSpend;
                 cd.MaxOff = data.MaxOff;
                 cd.BrandName = data.BrandName;
@@ -132,11 +135,11 @@ namespace CouponExchangeSystemApi_1.Service
                 {
                     CouponData data = new CouponData();
                     data.CouponId = item.CouponId;
-                    data.ExpiryDate = item.ExpiryDate;
+                    data.ExpiryDate = item.ExpiryDate.ToString("dd-MM-yyyy");
                     data.MinSpend = item.MinSpend;
                     data.MaxOff = item.MaxOff;
                     data.BrandName = item.BrandName;
-                    data.CouponCode = item.CouponCode;
+                    //data.CouponCode = item.CouponCode;
                     data.ProductList = item.ProductList;
                     data.UploadDate = item.UploadDate;
                     data.UserId = item.UserId;
@@ -150,7 +153,50 @@ namespace CouponExchangeSystemApi_1.Service
                 return null;
             }
         }
+        public CouponData ExchangeCoupon(CouponData uploadedCoupon, int selectedCouponId)
+        {
+            try
+            {
+                var result = AddCoupon(uploadedCoupon);
+                if(result != null)
+                {
+                    CouponDetails cd = appDbContext.CouponDetails.Where(x => x.CouponId == selectedCouponId && x.IsActive == true).FirstOrDefault();
+                    CouponData data = new CouponData();
+                    data.CouponId = cd.CouponId;
+                    data.ExpiryDate = cd.ExpiryDate.ToString("dd-MM-yyyy");
+                    data.MinSpend = cd.MinSpend;
+                    data.MaxOff = cd.MaxOff;
+                    data.BrandName = cd.BrandName;
+                    data.CouponCode = cd.CouponCode;
+                    data.ProductList = cd.ProductList;
+                    data.UploadDate = cd.UploadDate;
+                    data.UserId = cd.UserId;
+                    data.CouponCategoryId = cd.CouponCategoryId;
 
+                    //Fetch record from UserDetails and update CouponExchangeCount
+                    UserDetails ud = appDbContext.UserDetails.Where(x => x.UserId == uploadedCoupon.UserId).FirstOrDefault();
+                    if (ud != null)
+                    {
+                        ud.CouponExchangeCount = ud.CouponExchangeCount + 1;
+                        appDbContext.UserDetails.Update(ud);
+                        appDbContext.SaveChanges();
+                    }
+
+                    //Delete coupon which is seleted for exchange
+                    appDbContext.CouponDetails.Remove(cd);
+                    appDbContext.SaveChanges();
+                    return data;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (System.Exception)
+            {
+                return null;
+            }
+        }
         private void DeleteExpiredCoupons()
         {
             var data_list = appDbContext.CouponDetails.Where(x => x.IsActive == true && x.ExpiryDate < System.DateTime.Now).ToList();

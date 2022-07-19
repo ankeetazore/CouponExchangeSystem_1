@@ -23,6 +23,7 @@ namespace CouponExchangeSystemApi_1.Controllers
             return userRegistration.GetUser(username);
         }
 
+        [Route("RegisterUser")]
         [HttpPost]
         public UserDetailsData Post([FromBody] UserDetailsData user)
         {
@@ -32,6 +33,12 @@ namespace CouponExchangeSystemApi_1.Controllers
             else
                 return userRegistration.UpdateUser(user);
         }
-      
+
+        [Route("UpdatePassword")]
+        [HttpPost]
+        public string UpdatePassword(string username, string oldPassword, string newPassword)
+        {
+            return userRegistration.UpdatePassword(username, oldPassword, newPassword);
+        }
     }
 }

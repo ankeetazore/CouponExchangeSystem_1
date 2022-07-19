@@ -8,5 +8,6 @@ namespace CouponExchangeSystemApi_1.Interface
         CouponData AddCoupon(CouponData cd);
         CouponData GetCouponById(int couponId);
         List<CouponData> GetAllFilteredCoupons(CouponData data);
+        CouponData ExchangeCoupon(CouponData uploadedCoupon, int selectedCouponId);
     }
 }

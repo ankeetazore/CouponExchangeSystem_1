@@ -8,5 +8,6 @@ namespace CouponExchangeSystemApi_1.Interface
         UserDetailsData AddUser(UserDetailsData user);
         UserDetailsData UpdateUser(UserDetailsData user);
         UserDetailsData GetUser(string username);
+        string UpdatePassword(string username, string oldPassword, string newPassword);
     }
 }
