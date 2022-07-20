@@ -81,6 +81,7 @@ namespace CouponExchangeSystemApi_1.Service
                 cd.UploadDate = data.UploadDate;
                 cd.UserId = data.UserId;
                 cd.CouponCategoryId = data.CouponCategoryId;
+
                 return cd;
             }
             catch (System.Exception ex)
@@ -183,7 +184,8 @@ namespace CouponExchangeSystemApi_1.Service
                     }
 
                     //Delete coupon which is seleted for exchange
-                    appDbContext.CouponDetails.Remove(cd);
+                    cd.IsActive = false;
+                    appDbContext.CouponDetails.Update(cd);
                     appDbContext.SaveChanges();
                     return data;
                 }
