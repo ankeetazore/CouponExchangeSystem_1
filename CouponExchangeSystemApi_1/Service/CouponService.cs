@@ -71,7 +71,7 @@ namespace CouponExchangeSystemApi_1.Service
             {
                 CouponData cd = new CouponData();
                 var data = appDbContext.CouponDetails
-                    .Where(x => x.CouponId == couponId && x.IsActive == true).FirstOrDefault();
+                    .Where(x => x.CouponId == couponId).FirstOrDefault();
                 cd.ExpiryDate = data.ExpiryDate.ToString("dd-MM-yyyy");
                 cd.MinSpend = data.MinSpend;
                 cd.MaxOff = data.MaxOff;
